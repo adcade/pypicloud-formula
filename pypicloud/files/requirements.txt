@@ -1,0 +1,4 @@
+pypicloud==0.2.6
+waitress==0.8.9
+flywheel==0.3.0
+uwsgi==2.0.7
