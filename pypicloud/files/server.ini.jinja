@@ -10,7 +10,7 @@ pyramid.default_locale_name = en
 pypi.storage = s3
 storage.access_key = {{ s3_key }}
 storage.secret_key = {{ s3_secret }}
-storage.bucket = {{ pypi_bucket }}
+storage.bucket = {{ s3_bucket }}
 
 db.url = sqlite:///%(here)s/db.sqlite
 
@@ -20,8 +20,8 @@ auth.admins =
 user.{{ admin }} = {{ password }}
 
 # For beaker
-session.encrypt_key = Io+iUToFjqWeMGGSl2bNshgUl1n4GAC9zKBg3wNClpE=
-session.validate_key = F7nFkkph8pJc4xbty9l/9dQ76+Pu4OBJV0s0FxaHJkc=
+session.encrypt_key = {{ encrypt_key }}
+session.validate_key = {{ validate_key }}
 session.secure = True
 
 ###
@@ -31,7 +31,7 @@ session.secure = True
 [uwsgi]
 paste = config:%p
 paste-logger = %p
-socket = 127.0.0.1:3031
+socket = 127.0.0.1:{{ uwsgi_port }}
 master = true
 processes = 20
 reload-mercy = 15
